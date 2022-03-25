@@ -19,20 +19,21 @@ class Products extends Controller
 
     public function add()
     {
-        $postdata = $_POST??array();
-        // $this->view('products/add');
+        $postdata = $_POST ?? array();
+        
         // echo "<pre>";
         // print_r($postdata);
         // echo "</pre>";
 
         if (isset($postdata['id']) && isset($postdata['name']) && isset($postdata['price'])) {
-            $product = $this-> model('Product');
+            $product = $this-> model('Product');    // ?????????
             $product->name = $postdata['name'];
             $product->price = $postdata['price'];
             $product ->save();
         }
         
         $data['products'] = $this->model('Product')::all();
+        // print_r($data['products']);
         $this->view('products/add', $data);
         // print_r($postdata);
     }

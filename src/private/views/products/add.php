@@ -2,6 +2,8 @@
 
 global $settings;
 
+// print_r($data['products']);
+
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +26,31 @@ global $settings;
                 <input type="submit" value="Submit" name="submit"> 
             </p>
         </form>
+
+        <div id="productList">
+            <?php if (isset($data['products']) && sizeof($data['products'])) : ?>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>ACTION</th>
+                    </tr>
+                    <?PHP foreach ($data['products'] as $product) : ?>
+                        <tr>
+                            <td><?= $product->id; ?></td>
+                            <td><?= $product->name; ?></td>
+                            <td><?= $product->price; ?></td>
+                            <td>
+                                <a href="<?php echo $settings['siteurl']; ?>/products/edit">EDIT </a>
+                                &nbsp;
+                                <a href="<?php echo $settings['siteurl']; ?>/products/delete">DELETE </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php endif; ?>
+        </div>
     </div>
     
 </body>
