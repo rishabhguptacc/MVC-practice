@@ -5,4 +5,5 @@ like
 $settings['myvar'] = 'myvalue';
 
 2. create Controller based on Sample Controller at src/private/controllers/
+
 3. create View based on Sample View at src/private/views
