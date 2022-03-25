@@ -29,12 +29,33 @@ class Products extends Controller
             $product = $this-> model('Product');    // ?????????
             $product->name = $postdata['name'];
             $product->price = $postdata['price'];
-            $product ->save();
+            $product->save();
         }
+        
         
         $data['products'] = $this->model('Product')::all();
         // print_r($data['products']);
         $this->view('products/add', $data);
         // print_r($postdata);
+    }
+
+
+    public function edit()
+    {
+        $params = func_get_args();
+        print_r($params);
+    }
+
+    public function delete()
+    {
+        global $settings;
+
+        $params = func_get_args();
+
+        if ($params[1] == 'delete') {
+            $product = $this->model('Product')::find(array('id'=>$params[2]));
+            $product->delete();
+        }
+        header("Location: ".$settings['siteurl']."/products/add");
     }
 }

@@ -18,15 +18,25 @@ global $settings;
 <body>
     <!-- <p>This is add product template</p> -->
     <div id="wrapper">
-        <form action="<?php echo $settings['siteurl']; ?>/products/add" method="post" id="add_product_form">
-            <label for="id">PRODUCT ID : <input type="text" name="id" id="id">  </label>
-            <label for="id">PRODUCT NAME : <input type="text" name="name" id="name">  </label>
-            <label for="id">PRODUCT PRICE : <input type="text" name="price" id="price">  </label>
-            <p>
-                <input type="submit" value="Submit" name="submit"> 
-            </p>
-        </form>
-
+        <?php if (isset($data['product'])) : ?>
+            <form action="<?php echo $settings['siteurl']; ?>/products/add" method="post" id="add_product_form">
+                <label for="id">PRODUCT ID : <input type="text" name="id" id="id" value="<?= $data['product']->id; ?>">  </label>
+                <label for="id">PRODUCT NAME : <input type="text" name="name" id="name" value="<?= $data['product']->name; ?>">  </label>
+                <label for="id">PRODUCT PRICE : <input type="text" name="price" id="price" value="<?= $data['product']->price; ?>">  </label>
+                <p>
+                    <input type="submit" value="Submit" name="submit"> 
+                </p>
+            </form>
+        <?php else : ?>
+            <form action="<?php echo $settings['siteurl']; ?>/products/add" method="post" id="add_product_form">
+                <label for="id">PRODUCT ID : <input type="text" name="id" id="id">  </label>
+                <label for="id">PRODUCT NAME : <input type="text" name="name" id="name">  </label>
+                <label for="id">PRODUCT PRICE : <input type="text" name="price" id="price">  </label>
+                <p>
+                    <input type="submit" value="Submit" name="submit"> 
+                </p>
+            </form>
+        <?php endif; ?>
         <div id="productList">
             <?php if (isset($data['products']) && sizeof($data['products'])) : ?>
                 <table>
