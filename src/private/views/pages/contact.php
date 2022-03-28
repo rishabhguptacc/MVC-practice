@@ -1,3 +1,11 @@
+<?php
+
+global $settings;
+
+// print_r($data['products']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +17,7 @@
 <body>
     <p>This is contact template!</p>
 
-    <form action="http://localhost:8080/public/pages/contactformsubmission" method="post">
+    <form action="<?php echo $settings['siteurl']; ?>/pages/contactformsubmission" method="post">
         <label for="fname">First Name <input type="text" name="fname" id="fname"></label>
         <input type="submit" value="Submit" name="submit">
     </form>

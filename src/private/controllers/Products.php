@@ -43,8 +43,12 @@ class Products extends Controller
     public function edit()
     {
         $params = func_get_args();
-        print_r($params);
+        $data['products'] = $this->model('Product')::find(array('id' => $params[2]));
+        $this->view('products/add'. $data);
     }
+
+
+
 
     public function delete()
     {

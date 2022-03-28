@@ -19,12 +19,12 @@ global $settings;
     <!-- <p>This is add product template</p> -->
     <div id="wrapper">
         <?php if (isset($data['product'])) : ?>
-            <form action="<?php echo $settings['siteurl']; ?>/products/add" method="post" id="add_product_form">
+            <form action="<?php echo $settings['siteurl']; ?>/products/update" method="post" id="add_product_form">
                 <label for="id">PRODUCT ID : <input type="text" name="id" id="id" value="<?= $data['product']->id; ?>">  </label>
                 <label for="id">PRODUCT NAME : <input type="text" name="name" id="name" value="<?= $data['product']->name; ?>">  </label>
                 <label for="id">PRODUCT PRICE : <input type="text" name="price" id="price" value="<?= $data['product']->price; ?>">  </label>
                 <p>
-                    <input type="submit" value="Submit" name="submit"> 
+                    <input type="submit" value="Update Product" name="submit"> 
                 </p>
             </form>
         <?php else : ?>
@@ -33,7 +33,7 @@ global $settings;
                 <label for="id">PRODUCT NAME : <input type="text" name="name" id="name">  </label>
                 <label for="id">PRODUCT PRICE : <input type="text" name="price" id="price">  </label>
                 <p>
-                    <input type="submit" value="Submit" name="submit"> 
+                    <input type="submit" value="Add Product" name="submit"> 
                 </p>
             </form>
         <?php endif; ?>
@@ -52,9 +52,9 @@ global $settings;
                             <td><?= $product->name; ?></td>
                             <td><?= $product->price; ?></td>
                             <td>
-                                <a href="<?php echo $settings['siteurl']; ?>/products/edit">EDIT </a>
+                                <a href="<?php echo $settings['siteurl']; ?>/products/edit/<?= $product->id; ?>" >EDIT </a>
                                 &nbsp;
-                                <a href="<?php echo $settings['siteurl']; ?>/products/delete">DELETE </a>
+                                <a href="<?php echo $settings['siteurl']; ?>/products/delete/<?= $product->id; ?>" >DELETE </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

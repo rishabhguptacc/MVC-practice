@@ -28,12 +28,12 @@ class Pages extends Controller
 
         $fname = $_POST['fname'] ?? '';
 
-        // echo $fname;
+        // var_dump($fname) ;
     }
 
     public function contactFormSubmission()
     {
-        echo "inside contactFormSubmission()";
+        echo "inside contactFormSubmission()\n";
 
         print_r($_POST);
     }

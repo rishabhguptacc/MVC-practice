@@ -1,3 +1,8 @@
+<?php
+global $settings;
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
