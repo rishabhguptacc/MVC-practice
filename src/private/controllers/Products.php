@@ -43,11 +43,22 @@ class Products extends Controller
     public function edit()
     {
         $params = func_get_args();
-        $data['products'] = $this->model('Product')::find(array('id' => $params[2]));
-        $this->view('products/add'. $data);
+        $data['product'] = $this->model('Product')::find(array('id' => $params[2]));
+        $this->view('products/add', $data);
     }
 
-
+    public function update()
+    {
+        global $settings;
+        $postdata = $_POST ?? array();
+        if (isset($postdata['id']) && isset($postdata['name']) && isset($postdata['price'])) {
+            $product = $this-> model('Product')::find(array('id'=>$postdata['id']));
+            $product->name = $postdata['name'];
+            $product->price = $postdata['price'];
+            $product->save();
+        }
+        header("Location: ".$settings['siteurl']."/products/add");
+    }
 
 
     public function delete()
